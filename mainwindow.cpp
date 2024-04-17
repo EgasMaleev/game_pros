@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
         QPushButton* newBtn = new QPushButton(this);
         newBtn->setGeometry(rand->bounded(0, width()-SizeOfButton), min_y, SizeOfButton, SizeOfButton);
         int  moveSpeed = rand->bounded(1, 3);
+
         // "вложенный" таймер, чтобы можно было следить за данной кнопкой
         connect(glob_timer, &QTimer::timeout, newBtn, [this, newBtn, moveSpeed]
             {
@@ -31,7 +32,7 @@ MainWindow::MainWindow(QWidget *parent)
 
             if (newBtn->geometry().y() + SizeOfButton > height())  //проигрыш
             {
-                setWindowTitle("YOU LOOSE");
+                setWindowTitle("YOU LOOSE!");
                 setStyleSheet("background-color: red");
             }
         });
